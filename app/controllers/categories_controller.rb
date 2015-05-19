@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   def index
+    @categories = Category.all
     @videos = Video.all
   end
 
@@ -12,7 +13,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(:params[:id])
+    @category = Category.find(params[:id])
   end
 
   private

@@ -13,12 +13,16 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.save
+    redirect_to root_path
   end
 
   private
 
   def video_params
-    params.require(:video).permit(:title, :description, :small_cover_url, :large_cover_url, :category_id)
+    params.require(:video).permit(:title, :description, :small_cover_url, :large_cover_url, category_ids: [])
+  end
+
   def set_video
     @video = Video.find(params[:id])
   end

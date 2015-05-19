@@ -1,0 +1,12 @@
+<ul><%= form_for @video do |form| %>
+
+<li><%= form.label :title %></li>
+<%= form.text_field :title %>
+<li><%= form.label :description %></li>
+<%= form.text_area :description %>
+<%= form.label "Categories" %>
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :title do |cb|%>
+    <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.text} %>
+  <% end %>
+<%= form.submit "Submit", class: "btn btn-success" %>
+<% end %>
