@@ -1,0 +1,22 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+      = link_to "myFlix", root_path, class: "navbar-brand"
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = form_tag search_videos_path, class: "span5 for-search" do
+            %input.search-query(name="search-term" type="text" placeholder="Search for videos here")
+            %button.btn(type="submit") Search
+        %li.dropdown
+          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            Menu
+            %span.caret
+          %ul.dropdown-menu{:role => "menu"}
+            %li= link_to "Videos", videos_path
+            %li= link_to "Categories", categories_path
+            %li.divider
+            %li= link_to "Add Video", new_video_path
+            %li= link_to "Add Categories", new_category_path
