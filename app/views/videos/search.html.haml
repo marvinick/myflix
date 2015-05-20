@@ -1,2 +1,6 @@
-= @results.each do |video|
-  = video.title
+%article.video_category
+  .videos.row
+    - @results.each do |video|
+      .video.span2
+        = link_to video do
+          %li= video.title

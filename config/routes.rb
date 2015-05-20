@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "videos#index"
   resources :videos do
     collection do
-      get :search, to: "videos#search"
+      post :search, to: "videos#search"
     end
   end
   resources :categories
