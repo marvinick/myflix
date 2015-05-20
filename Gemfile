@@ -12,11 +12,13 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'twitter-bootstrap-rails'
 
-group :test do
-  gem "rspec-rails"
+group :development, :test do
+  gem 'rspec-rails'
 end
 
-group :test, :development do
-  gem "capybara"
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
