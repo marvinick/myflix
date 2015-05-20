@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "categories#index"
-  resources :videos
+  resources :videos do
+    collection do
+      get :search, to: "videos#search"
+    end
+  end
   resources :categories
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,6 +11,10 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
+  def search
+    @results = Video.search_by_title(params[:search_term])
+  end
+
   def create
     @video = Video.new(video_params)
     @video.save

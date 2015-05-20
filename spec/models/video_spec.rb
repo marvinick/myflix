@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Video do
   it { should validate_presence_of(:title)}
   it { should validate_presence_of(:description)}
-  it { should have_many(:video_categories)}
-  it { should have_many(:categories)}
+  it { should belong_to(:category)}
+
 
   describe "search_by_title" do
     it "returns an empty array if there's no match" do
@@ -26,10 +26,10 @@ describe Video do
     it "returns an array of all matches ordered by title " do
       video1 = Video.create(title: "futurama", description: "space travel", created_at: 1.day.ago)
       video2 = Video.create(title: "family guy", description: "funny")
-      expect(Video.search_by_title("fam")).to eq([video2, video1])
+      expect(Video.search_by_title("f")).to eq([video2, video1])
     end
     it "returns an empty array when nothing in search bar " do
-      video1 = Video.create(title: "futurama", description: "space travel", created_at: 1.day.ago)
+      video1 = Video.create(title: "futurama", description: "space travel")
       video2 = Video.create(title: "family guy", description: "funny")
       expect(Video.search_by_title("")).to eq([])
     end
